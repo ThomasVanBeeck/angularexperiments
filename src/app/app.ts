@@ -39,10 +39,16 @@ export class App {
     }))
   }
 
+  prevRandomIndex : number = 0
+  randomIndex : number = 0
+
   replaceAnimal(): void {
     console.log("replace animal triggered.")
-    const randomIndex : number = Math.floor(Math.random() * this.animals.length)
-    const randomAnimal : AnimalModel = this.animals[randomIndex]
+    while (this.prevRandomIndex === this.randomIndex)
+      this.randomIndex = Math.floor(Math.random() * this.animals.length)
+
+    const randomAnimal : AnimalModel = this.animals[this.randomIndex]
+    this.prevRandomIndex = this.randomIndex
     this.animal.set(randomAnimal)
   }
 
