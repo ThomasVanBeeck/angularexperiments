@@ -9,7 +9,7 @@ import { DecimalPipe } from '@angular/common';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('ponyracer!!!!!');
+  protected readonly title = signal('Angular Experiments!');
   firstnumber = signal(69)
   secondnumber = signal(1)
   sumnumbers = computed(() => (this.firstnumber() ?? 0) + (this.secondnumber() ?? 0))
