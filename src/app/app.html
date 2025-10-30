@@ -1,0 +1,44 @@
+<h1>Hello, {{ title() }}</h1>
+<p>
+  som:
+  {{ sumnumbers() !== null && typeof sumnumbers() === 'number' ? (sumnumbers() | number:'1.0-2') : sumnumbers() }}
+</p>
+<p>
+  verschil:
+  {{ subtractnumbers() !== null && typeof subtractnumbers() === 'number' ? (subtractnumbers() | number:'1.0-2') : subtractnumbers()  }}
+</p>
+<p>
+  product:
+  {{ multiplynumbers() !== null && typeof multiplynumbers() === 'number' ? (multiplynumbers() | number:'1.0-2') : multiplynumbers() }}
+</p>
+<p>
+  deling:
+  {{ dividenumbers() !== null && typeof dividenumbers() === 'number' ? (dividenumbers() | number:'1.0-2') : dividenumbers() }}
+</p>
+
+<div>
+  <input
+    type="number"
+    [value]="firstnumber()"
+    (input)="firstnumber.set($any($event.target).valueAsNumber)"
+  />
+</div>
+
+<div>
+  <input
+    type="number"
+    [value]="secondnumber()"
+    (input)="secondnumber.set($any($event.target).valueAsNumber)"
+  />
+</div>
+
+<div>
+  <p>{{ animal().color }}</p>
+  <p>{{ animal().dangerous }}</p>
+  <p>{{ animal().legs }}</p>
+  <p>{{ animal().name }}</p>
+</div>
+
+<button (click)="changeToBrownNotDangerous()">Change animal to brown not dangerous</button>
+<button (click)="replaceAnimal()">Choose random animal</button>
+<button (click)="incrementNumbers()">Increment numbers</button>
