@@ -1,15 +1,23 @@
 import { Component, computed, signal, effect } from '@angular/core';
 import { AnimalModel, createRandomAnimals } from '../interfaces/animals';
-import { DecimalPipe } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
+import { Races } from './races/races';
 
 @Component({
   selector: 'app-root',
-  imports: [DecimalPipe],
+  standalone: true,
+  imports: [DecimalPipe, Races, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
+
+onNewRace() {
+  console.log("parent: New race started!")
+}
+
   protected readonly title = signal('Angular Experiments!');
+  testname: string = 'test failed'
   firstnumber = signal(69)
   secondnumber = signal(1)
   sumnumbers = computed(() => (this.firstnumber() ?? 0) + (this.secondnumber() ?? 0))
