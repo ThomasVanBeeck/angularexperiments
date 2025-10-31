@@ -39,6 +39,20 @@
   <p>{{ animal().legs }}</p>
   <p>{{ animal().name }}</p>
 </div>
+@if (animals.length > 3) {
+<p>There are more than 3 animals.</p>
+} @else{
+<p>There are only 3 or less animals.</p>
+}
+<p>There are exactly {{ animals.length }} animals.</p>
+<h2>Animals:</h2>
+<ul>
+  @for (animal of animals; track animal; let index=$index) {
+  <li [class.evengrey]="$even" [class.oddblue]="$odd">{{ index + 1 }}: {{ animal.name }}</li>
+  } @empty {
+  <li>No animals to display...</li>
+  }
+</ul>
 
 <button (click)="changeToBrownNotDangerous()">Change animal to brown not dangerous</button>
 <button (click)="replaceAnimal()">Choose random animal</button>

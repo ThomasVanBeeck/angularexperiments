@@ -1,4 +1,8 @@
 <p>races works!</p>
+<button (click)="onButtonClickNewRace($event)">Start New Race</button>
 <div>
-  <button (click)="onButtonClickNewRace()">Start New Race</button>
+  <p>example of local variable for referencing DOM input field</p>
+  <p>the button will trigger 'focus()' on that input field:</p>
+  <input type="text" #name />
+  <button (click)="name.focus()">Focus the input</button>
 </div>

@@ -5,12 +5,18 @@ import { Races } from './races/races';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [DecimalPipe, Races, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
+
+  //testen van effect, a.k.a. of de signalwaardes gewijzigd zijn (triggers)
+  constructor() {
+    effect(() => console.log("first number gewijzigd", this.firstnumber()))
+    effect(() => console.log("second number gewijzigd", this.secondnumber()))
+    effect(() => console.log("animal gewijzigd", this.animal()))
+  }
 
 onNewRace() {
   console.log("parent: New race started!")
@@ -29,8 +35,8 @@ onNewRace() {
     return number2 === 0 ? 'ongeldig' : number1/number2
   }
   )
-
   animals: Array<AnimalModel> = createRandomAnimals()
+  //animals: Array<AnimalModel> = [] // to test @empty in html template
 
   animal = signal<AnimalModel>({
     legs: 4,
@@ -65,12 +71,5 @@ onNewRace() {
     console.log("incrementing numbers...")
     this.firstnumber.set(this.firstnumber()+1)
     this.secondnumber.update(nr => nr+1)
-  }
-
-  //testen van effect, a.k.a. of de signalwaardes gewijzigd zijn (triggers)
-  constructor() {
-    effect(() => console.log("first number gewijzigd", this.firstnumber()))
-    effect(() => console.log("second number gewijzigd", this.secondnumber()))
-    effect(() => console.log("animal gewijzigd", this.animal()))
   }
 }
