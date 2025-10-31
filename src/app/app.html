@@ -75,4 +75,6 @@
 
 <app-races (newRaceAvailable)="onNewRace()"></app-races>
 
-<app-car></app-car>
+<app-car [carsmessage]="messageAboutCars()"></app-car>
+
+<button (click)="ToggleMessageNr()">Change car message</button>

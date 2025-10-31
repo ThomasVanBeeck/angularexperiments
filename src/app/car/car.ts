@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { CarModel } from '../../interfaces/car';
+import { Component, input, signal } from '@angular/core';
+import { CarModel } from '../../interfaces/carmodel';
 
 @Component({
   selector: 'app-car',
@@ -13,5 +13,7 @@ export class Car {
     { id: 2, brandname: 'Ford', modelname: 'Focus', horsepower: 160, price: 28500 },
     { id: 3, brandname: 'Citroën', modelname: 'C4', horsepower: 120, price: 24450}
   ])
+
+  carsmessage = input<string>()
 
 }

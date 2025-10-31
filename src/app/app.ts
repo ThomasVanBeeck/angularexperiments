@@ -21,7 +21,29 @@ export class App {
 
 onNewRace() {
   console.log("parent: New race started!")
-}
+  }
+  
+  messageToggle: number = 0
+  carMessages: Array<string> = [
+    "I love cars!",
+    "Vrrrooomm!",
+    "Toys for big boys.",
+    "Drive to survive.",
+    "A symbol of freedom."
+  ]
+  
+  ToggleMessageNr(): void {
+    console.log(this.messageToggle)
+    console.log(this.carMessages.length)
+    if (this.messageToggle < this.carMessages.length-1) this.messageToggle +=1
+    else this.messageToggle = 0
+    console.log("new value:")
+    console.log(this.messageToggle)
+  }
+
+  messageAboutCars(): string {
+    return this.carMessages[this.messageToggle]
+  }
 
   protected readonly title = signal('Angular Experiments!');
   firstnumber = signal(69)

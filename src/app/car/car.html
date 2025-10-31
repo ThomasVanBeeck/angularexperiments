@@ -1,4 +1,5 @@
 <div>
+    <h1>Cars: {{ carsmessage() }}</h1>
     <ul>
         @for (car of cars(); track car.id) {
             <li>{{car.id}} {{car.brandname}} {{car.modelname}} {{car.price}}</li>
