@@ -1,5 +1,5 @@
-<h1>Hello, {{ title() }}</h1>
-<h2>{{ testname }}</h2>
+<h1>{{ title() }}</h1>
+<!-- property binding en piping voorbeelden -->
 <p>
   som:
   {{ sumnumbers() !== null && typeof sumnumbers() === 'number' ? (sumnumbers() | number:'1.0-2') : sumnumbers() }}
@@ -23,9 +23,6 @@
     [value]="firstnumber()"
     (input)="firstnumber.set($any($event.target).valueAsNumber)"
   />
-</div>
-
-<div>
   <input
     type="number"
     [value]="secondnumber()"
@@ -33,22 +30,40 @@
   />
 </div>
 
+<button (click)="incrementNumbers()">Increment numbers</button>
+
+<!-- writable signal van object literal animal, weergeven van losse properties -->
 <div>
-  <p>{{ animal().color }}</p>
-  <p>{{ animal().dangerous }}</p>
-  <p>{{ animal().legs }}</p>
-  <p>{{ animal().name }}</p>
+  <span>Color: {{ animal().color | titlecase }}</span>
+  <span>Dangerous: {{ animal().dangerous ? 'Yes':'No'}}</span>
+  <span>Legs: {{ animal().legs}}</span>
+  <span>Name: {{ animal().name | titlecase}}</span>
 </div>
-@if (animals.length > 3) {
+
+<!-- @if, @let, @for, @switch voorbeelden -->
+@let animalsLength = animals.length;
+@if (animalsLength > 3) {
 <p>There are more than 3 animals.</p>
 } @else{
 <p>There are only 3 or less animals.</p>
 }
-<p>There are exactly {{ animals.length }} animals.</p>
+<p>There are exactly {{ animalsLength }} animals.</p>
 <h2>Animals:</h2>
 <ul>
   @for (animal of animals; track animal; let index=$index) {
-  <li [class.evengrey]="$even" [class.oddblue]="$odd">{{ index + 1 }}: {{ animal.name }}</li>
+  <li [class.evengrey]="$even" [class.oddblue]="$odd">{{ index + 1 }}: {{ animal.name }} - 
+    @switch (animal.name) {
+      @case("Lion") {
+        King of the jungle!
+      }
+      @case("Dog") {
+        Woof!
+      }
+      @default {
+        Nothing specific to tell about this animal.
+      }
+    }
+  </li>
   } @empty {
   <li>No animals to display...</li>
   }
@@ -56,6 +71,8 @@
 
 <button (click)="changeToBrownNotDangerous()">Change animal to brown not dangerous</button>
 <button (click)="replaceAnimal()">Choose random animal</button>
-<button (click)="incrementNumbers()">Increment numbers</button>
+
 
 <app-races (newRaceAvailable)="onNewRace()"></app-races>
+
+<app-car></app-car>

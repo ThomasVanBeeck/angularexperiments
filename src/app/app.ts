@@ -2,10 +2,11 @@ import { Component, computed, signal, effect } from '@angular/core';
 import { AnimalModel, createRandomAnimals } from '../interfaces/animals';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { Races } from './races/races';
+import { Car } from './car/car';
 
 @Component({
   selector: 'app-root',
-  imports: [DecimalPipe, Races, CommonModule],
+  imports: [DecimalPipe, Races, Car, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -23,7 +24,6 @@ onNewRace() {
 }
 
   protected readonly title = signal('Angular Experiments!');
-  testname: string = 'test failed'
   firstnumber = signal(69)
   secondnumber = signal(1)
   sumnumbers = computed(() => (this.firstnumber() ?? 0) + (this.secondnumber() ?? 0))
@@ -40,7 +40,7 @@ onNewRace() {
 
   animal = signal<AnimalModel>({
     legs: 4,
-    name: "Flatcoat",
+    name: "Panther",
     color: "Black",
     dangerous: true
   })

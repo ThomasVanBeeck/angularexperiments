@@ -5,3 +5,23 @@
 .oddblue {
   color: rgb(29, 29, 121);
 }
+
+input, button, span {
+
+  margin: 0.3rem;
+  margin-left: 0rem;
+}
+
+input {
+    width: 50px;
+}
+
+button {
+  color: white;
+  background-color: darkslategrey;
+}
+
+span {
+  color: darkred;
+  margin-right: 0.8rem;
+}
