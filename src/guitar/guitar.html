@@ -1,0 +1,9 @@
+<h2>Guitar Collection</h2>
+
+@for (item of guitarCollection | keyvalue; track item) {
+    <p>{{item.key}} - {{ item.value.brandname}} {{ item.value.modelname }} has
+        {{ item.value.strings}} strings and
+        @if (item.value.hasActivePickups) { active pickups. }
+        @else { passive pickups. }
+    </p>
+}

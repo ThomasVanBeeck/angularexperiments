@@ -72,9 +72,20 @@
 <button (click)="changeToBrownNotDangerous()">Change animal to brown not dangerous</button>
 <button (click)="replaceAnimal()">Choose random animal</button>
 
-
-<app-races (newRaceAvailable)="onNewRace()"></app-races>
+<div class="flexdiv">
+  <app-races (newRaceAvailable)="onNewRace()"></app-races>
+  @if (raceStartedIsVisible) {
+    <p class="newrace">New race just started!</p>
+  }
+</div>
 
 <app-car [carsmessage]="messageAboutCars()"></app-car>
+<p style="font-weight: bold">Available car messages:</p>
+<!-- json pipe interpolation expression -->
+<p style="color: blue"> {{ carMessages | json }} </p>
+<!-- json pipe property expression -->
+<p style="color: green" [textContent]="carMessages | json"></p>
 
 <button (click)="ToggleMessageNr()">Change car message</button>
+
+<app-guitar></app-guitar>

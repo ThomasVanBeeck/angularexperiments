@@ -1,12 +1,14 @@
 import { Component, computed, signal, effect } from '@angular/core';
-import { AnimalModel, createRandomAnimals } from '../interfaces/animals';
+import { AnimalModel, createRandomAnimals } from '../models/animalmodel';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { Races } from './races/races';
 import { Car } from './car/car';
+import { timer } from 'rxjs';
+import { Guitar } from '../guitar/guitar';
 
 @Component({
   selector: 'app-root',
-  imports: [DecimalPipe, Races, Car, CommonModule],
+  imports: [DecimalPipe, Races, Car, Guitar, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -19,8 +21,11 @@ export class App {
     effect(() => console.log("animal gewijzigd", this.animal()))
   }
 
+  raceStartedIsVisible : boolean = false
 onNewRace() {
   console.log("parent: New race started!")
+  this.raceStartedIsVisible = true;
+  timer(350).subscribe(() => this.raceStartedIsVisible = false);
   }
   
   messageToggle: number = 0
