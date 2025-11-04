@@ -1,0 +1,11 @@
+<h3>template-driven form:</h3>
+<form (ngSubmit)="login()">
+  <div>
+    <label>Username: </label>
+    <input name="username" [(ngModel)]="user.username" />
+    <small>{{ user.username }} is a good name.</small>
+    <label>Password: </label>
+    <input name="password" type="password" [(ngModel)]="user.password" />
+    <button type="submit">Login</button>
+  </div>
+</form>

@@ -1,4 +1,8 @@
 <h1>{{ title() }}</h1>
+
+<app-form-template-driven></app-form-template-driven>
+<app-form-code-driven></app-form-code-driven>
+
 <!-- interpolation, piping, property binding [], event binding() voorbeelden -->
 <p>
   som:
@@ -35,14 +39,13 @@
 <!-- writable signal van object literal animal, weergeven van losse properties -->
 <div>
   <span>Color: {{ animal().color | titlecase }}</span>
-  <span>Dangerous: {{ animal().dangerous ? 'Yes':'No'}}</span>
-  <span>Legs: {{ animal().legs}}</span>
-  <span>Name: {{ animal().name | titlecase}}</span>
+  <span>Dangerous: {{ animal().dangerous ? 'Yes' : 'No' }}</span>
+  <span>Legs: {{ animal().legs }}</span>
+  <span>Name: {{ animal().name | titlecase }}</span>
 </div>
 
 <!-- @if, @let, @for, @switch voorbeelden -->
-@let animalsLength = animals.length;
-@if (animalsLength > 3) {
+@let animalsLength = animals.length; @if (animalsLength > 3) {
 <p>There are more than 3 animals.</p>
 } @else{
 <p>There are only 3 or less animals.</p>
@@ -51,18 +54,9 @@
 <h2>Animals:</h2>
 <ul>
   @for (animal of animals; track animal; let index=$index) {
-  <li [class.evengrey]="$even" [class.oddblue]="$odd">{{ index + 1 }}: {{ animal.name }} - 
-    @switch (animal.name) {
-      @case("Lion") {
-        King of the jungle!
-      }
-      @case("Dog") {
-        Woof!
-      }
-      @default {
-        Nothing specific to tell about this animal.
-      }
-    }
+  <li [class.evengrey]="$even" [class.oddblue]="$odd">
+    {{ index + 1 }}: {{ animal.name }} - @switch (animal.name) { @case("Lion") { King of the jungle!
+    } @case("Dog") { Woof! } @default { Nothing specific to tell about this animal. } }
   </li>
   } @empty {
   <li>No animals to display...</li>
@@ -75,14 +69,14 @@
 <div class="flexdiv">
   <app-races (newRaceAvailable)="onNewRace()"></app-races>
   @if (raceStartedIsVisible) {
-    <p class="newrace">New race just started!</p>
+  <p class="newrace">New race just started!</p>
   }
 </div>
 
 <app-car [carsmessage]="messageAboutCars()"></app-car>
 <p style="font-weight: bold">Available car messages:</p>
 <!-- json pipe interpolation expression -->
-<p style="color: blue"> {{ carMessages | json }} </p>
+<p style="color: blue">{{ carMessages | json }}</p>
 <!-- json pipe property expression -->
 <p style="color: green" [textContent]="carMessages | json"></p>
 

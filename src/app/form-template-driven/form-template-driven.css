@@ -1,0 +1,15 @@
+form {
+  display: block;
+  background-color: beige;
+  padding: 0.5rem;
+}
+
+div > * {
+  display: block;
+  margin: 0.5rem 0rem;
+}
+
+div {
+  margin: auto;
+  width: 16rem;
+}

@@ -5,10 +5,12 @@ import { Races } from './races/races';
 import { Car } from './car/car';
 import { timer } from 'rxjs';
 import { Guitar } from '../guitar/guitar';
+import { FormTemplateDriven } from "./form-template-driven/form-template-driven";
+import { FormCodeDriven } from "./form-code-driven/form-code-driven";
 
 @Component({
   selector: 'app-root',
-  imports: [DecimalPipe, Races, Car, Guitar, CommonModule],
+  imports: [DecimalPipe, Races, Car, Guitar, CommonModule, FormTemplateDriven, FormCodeDriven],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

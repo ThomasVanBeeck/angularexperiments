@@ -1,0 +1,33 @@
+<h3>code-driven form:</h3>
+<form (ngSubmit)="register()" [formGroup]="userForm">
+  <div>
+    <label>Username: </label>
+    <input formControlName="username" />
+
+    <p style="min-height: 1.2em; color: red">
+      @if(usernameCtrl.dirty && usernameCtrl.hasError('required')) { username required }
+      @if(usernameCtrl.hasError('minlength')) { username is too short }
+      @if(usernameCtrl.hasError('maxlength')) { username is too long }
+    </p>
+
+    <label>Email:</label>
+    <input type="email" formControlName="email" />
+
+    <p style="min-height: 1.2em; color: red">
+      @if(emailCtrl.dirty && emailCtrl.hasError('required')) { email required }
+      @if(emailCtrl.hasError('email')) { valid email address required}
+    </p>
+
+    <label>Password: </label>
+    <input type="password" formControlName="password" />
+
+    <p style="min-height: 1.2em; color: red">
+      @if(passwordCtrl.dirty && passwordCtrl.hasError('required')) { password required }
+      @if(passwordCtrl.hasError('minlength')) { password is too short }
+      @if(passwordCtrl.hasError('maxlength')) { password is too long }
+    </p>
+
+    <button type="submit" [disabled]="userForm.invalid">login</button>
+    <button type="button" (click)="setJohnDoe()">John Doe</button>
+  </div>
+</form>

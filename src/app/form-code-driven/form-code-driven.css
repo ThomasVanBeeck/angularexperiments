@@ -1,0 +1,27 @@
+form {
+  display: block;
+  background-color: bisque;
+  padding: 0.8rem;
+}
+
+div > * {
+  display: block;
+  margin: 0.15rem 0rem;
+}
+
+div > p {
+  margin: 0.15rem 0rem;
+}
+
+div {
+  margin: auto;
+  width: 16rem;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 1px red solid;
+}
+
+input {
+  border: 1px rgb(171, 150, 125) solid;
+}
